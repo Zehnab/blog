@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  http_basic_authenticate_with :name =>"dhh", :password => "secret",:except =>[:index, :show]
+  
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -45,7 +47,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params[:post_id])
 
     respond_to do |format|
       if @post.save
