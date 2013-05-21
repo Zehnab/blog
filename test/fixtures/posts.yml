@@ -2,10 +2,14 @@
 
 one:
   name: MyString
-  title: 
+  title: MyString
   content: MyText
+  exerpt: MyString
+  location: MyString
 
 two:
   name: MyString
-  title: 
+  title: MyString
   content: MyText
+  exerpt: MyString
+  location: MyString

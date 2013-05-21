@@ -1,53 +1,30 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with :name =>"dhh", :password => "secret",:except =>[:index, :show]
-  
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
-	def index
-	
-	  @posts = Post.all
-	 
-	  respond_to do |format|
-		format.html  # index.html.erb
-		format.json  { render :json => @posts }
-	  
-	  end
-	end
+  def index
+    @posts = Post.all
+  end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-  @post = Post.find(params[:id])
-  	respond_to do |format|
-		format.html  # show.html.erb
-		format.json  { render :json => @post }
-	  
-	  end
-	
   end
 
   # GET /posts/new
   def new
     @post = Post.new
-	respond_to do |format|
-		format.html  # index.html.erb
-		format.json  { render :json => @post }
-	  
-	  end
   end
 
   # GET /posts/1/edit
   def edit
-  @post=Post.find(params[:id])
-  
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params[:post_id])
+    @post = Post.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -92,6 +69,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name, :title, :content)
+      params.require(:post).permit(:name, :title, :content, :exerpt, :location)
     end
 end

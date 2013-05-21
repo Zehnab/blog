@@ -1,13 +1,15 @@
 Blog::Application.routes.draw do
  
 
+  resources :posts
+
   get "home/index"
   
   
   
   
    resources :posts do
-	resources:comments
+	resources :comments
 	end
   
   
